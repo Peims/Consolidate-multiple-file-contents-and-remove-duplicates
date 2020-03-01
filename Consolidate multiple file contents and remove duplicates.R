@@ -1,0 +1,7 @@
+rm(list=ls())
+file<- list.files(pattern="limma")
+b<-lapply(file,read.table)
+c<- as.data.frame(do.call(rbind,b))
+c<-select(c,V1)
+d<-unique(c)
+write.table(d,file="mRNAlist",sep="\t",row.names = F,col.names = F,quote=F)
